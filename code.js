@@ -29,6 +29,7 @@ class VistaPeliculaHTML {
     mostrarDetalle(datosPelicula) {
         let div = document.createElement("div");
         div.setAttribute("class", "detalle");
+        let divTexto = document.createElement("div");
         let divFoto = document.createElement("div");
         let nombre = document.createElement('h2')
         let foto = document.createElement('img')
@@ -60,6 +61,7 @@ class VistaPeliculaHTML {
         div.appendChild(boton)
         divFoto.appendChild(foto)
         this.main.appendChild(div);
+        div.style.top = window.scrollY + "100px";
     }
 
     errorConexion() {
