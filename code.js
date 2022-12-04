@@ -42,7 +42,7 @@ class VistaPeliculaHTML {
         let actores = document.createElement('p')
         let boton = document.createElement('button')
         boton.setAttribute('class', 'volver')
-        boton.innerHTML = "Volver"
+        boton.innerHTML = "X"
         boton.addEventListener("click", (e) => {
             e.target.parentNode.remove();   
             this.main.parentNode.style.overflow = "auto";
@@ -54,17 +54,17 @@ class VistaPeliculaHTML {
         duracion.innerHTML = "Duración: " + datosPelicula.Runtime;
         sinopsis.innerHTML = "Sinopsis: " + datosPelicula.Plot;
         actores.innerHTML = "Actores: " + datosPelicula.Actors;
-        divTexto.appendChild(divFoto)
+        div.appendChild(divFoto)
         divTexto.appendChild(nombre)
         divTexto.appendChild(director)
         divTexto.appendChild(genero)
         divTexto.appendChild(duracion)
         divTexto.appendChild(sinopsis)
         divTexto.appendChild(actores)
-        div.appendChild(boton)
         divFoto.appendChild(foto)
         div.appendChild(divTexto)
         this.main.appendChild(div);
+        div.appendChild(boton)
         div.style.top = window.scrollY + '50px';
         this.main.parentNode.style.overflow = 'hidden';
     }
