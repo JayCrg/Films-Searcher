@@ -30,7 +30,9 @@ class VistaPeliculaHTML {
         let div = document.createElement("div");
         div.setAttribute("class", "detalle");
         let divTexto = document.createElement("div");
+        divTexto.setAttribute("class", "texto");
         let divFoto = document.createElement("div");
+        divFoto.setAttribute("class", "foto");
         let nombre = document.createElement('h2')
         let foto = document.createElement('img')
         let director = document.createElement('p')
@@ -43,6 +45,7 @@ class VistaPeliculaHTML {
         boton.innerHTML = "Volver"
         boton.addEventListener("click", (e) => {
             e.target.parentNode.remove();   
+            this.main.parentNode.style.overflow = "auto";
         })
         nombre.innerHTML = datosPelicula.Title;
         foto.src = datosPelicula.Poster=='N/A'?'no-image-found.webp':datosPelicula.Poster;
@@ -51,17 +54,19 @@ class VistaPeliculaHTML {
         duracion.innerHTML = "Duración: " + datosPelicula.Runtime;
         sinopsis.innerHTML = "Sinopsis: " + datosPelicula.Plot;
         actores.innerHTML = "Actores: " + datosPelicula.Actors;
-        div.appendChild(divFoto)
-        div.appendChild(nombre)
-        div.appendChild(director)
-        div.appendChild(genero)
-        div.appendChild(duracion)
-        div.appendChild(sinopsis)
-        div.appendChild(actores)
+        divTexto.appendChild(divFoto)
+        divTexto.appendChild(nombre)
+        divTexto.appendChild(director)
+        divTexto.appendChild(genero)
+        divTexto.appendChild(duracion)
+        divTexto.appendChild(sinopsis)
+        divTexto.appendChild(actores)
         div.appendChild(boton)
         divFoto.appendChild(foto)
+        div.appendChild(divTexto)
         this.main.appendChild(div);
-        div.style.top = window.scrollY + "100px";
+        div.style.top = window.scrollY + '50px';
+        this.main.parentNode.style.overflow = 'hidden';
     }
 
     errorConexion() {
