@@ -114,11 +114,12 @@ function display() {
 }
 
 function recogePeliculas(i = 1) {
-    if (!coincidencias)
-        return;
+    if (!coincidencias || !recarga)
+    return;
     httpRequest.open("GET", `https://www.omdbapi.com/?s=${document.querySelector('input').value}&page=${i}&apikey=70e51670`, true);
     httpRequest.onreadystatechange = tomaPeliculas;
     httpRequest.send();
+    console.log('scroll');
 }
 
 function tomaPeliculas() {
@@ -127,7 +128,6 @@ function tomaPeliculas() {
         var valores;
         if (httpRequest.status == 200) {
             valores = JSON.parse(httpRequest.responseText);
-            // console.log('trae datos');
             if (valores.Response == "True") {
                 let divIndividual;
                 for (let i = 0; i < valores.Search.length; i++) {
@@ -153,7 +153,7 @@ function tomaPeliculas() {
     }
 }
 
-
+//detalle de la pelicula
 function recogeDetalle(idPelicula) {
     httpRequest.open("GET", `https://www.omdbapi.com/?i=${idPelicula}&apikey=70e51670`, true);
     httpRequest.onreadystatechange = tomaDetalle;
